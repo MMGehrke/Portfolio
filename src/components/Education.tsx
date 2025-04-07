@@ -6,46 +6,38 @@ const Education = () => {
     {
       degree: 'Master of Science in Cybersecurity',
       school: 'University of London',
-      year: '2023 - Present',
-      description: 'Specializing in Network Security and Ethical Hacking. Current GPA: 3.9/4.0',
+      year: 'April 2024 - April 2026',
+      description: 'Specializing in GRC and application security',
       courses: [
-        'Advanced Network Security',
-        'Cryptography and Data Protection',
-        'Ethical Hacking and Penetration Testing',
-        'Security Architecture and Design',
-        'Digital Forensics',
+        'Web and Application Security',
+        'Applied Cryptography',
+        'Security and Behavior Change',
+        'Cybersecurity Foundations',
       ],
     },
     {
-      degree: 'Bachelor of Science in Computer Science',
-      school: 'State University',
-      year: '2018 - 2022',
-      description: 'Minor in Information Security. GPA: 3.8/4.0',
-      courses: [
-        'Computer Networks',
-        'Operating Systems Security',
-        'Database Security',
-        'Software Engineering',
-        'Information Assurance',
-      ],
+      degree: 'Bachelor of Science in Cultural Anthropology',
+      school: 'University of Utah',
+      year: '2017 - 2019',
+      description: '',
     },
   ];
 
   const certifications = [
     {
-      name: 'Certified Ethical Hacker (CEH)',
-      issuer: 'EC-Council',
-      year: '2023',
-    },
-    {
       name: 'CompTIA Security+',
       issuer: 'CompTIA',
-      year: '2022',
+      year: '2025',
     },
     {
-      name: 'Cisco Certified Network Associate (CCNA)',
-      issuer: 'Cisco',
-      year: '2021',
+      name: 'ISO 27001 Lead Auditor',
+      issuer: 'Mastermind',
+      year: '2025',
+    },
+    {
+      name: 'Google Data Analytics Certification',
+      issuer: 'Google',
+      year: '2023',
     },
   ];
 
@@ -89,15 +81,19 @@ const Education = () => {
                   </h4>
                   <p className="text-primary font-medium">{edu.school}</p>
                   <p className="text-gray-300 text-sm mb-4">{edu.year}</p>
-                  <p className="text-gray-300 mb-4">{edu.description}</p>
-                  <div>
-                    <h5 className="font-medium text-white mb-2">Key Courses:</h5>
-                    <ul className="list-disc list-inside text-gray-300 space-y-1">
-                      {edu.courses.map((course, i) => (
-                        <li key={i}>{course}</li>
-                      ))}
-                    </ul>
-                  </div>
+                  {edu.description && (
+                    <p className="text-gray-300 mb-4">{edu.description}</p>
+                  )}
+                  {edu.courses && (
+                    <div>
+                      <h5 className="font-medium text-white mb-2">Key Courses:</h5>
+                      <ul className="list-disc list-inside text-gray-300 space-y-1">
+                        {edu.courses.map((course, i) => (
+                          <li key={i}>{course}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
