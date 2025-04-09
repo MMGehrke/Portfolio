@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { AcademicCapIcon, BookOpenIcon } from '@heroicons/react/24/outline';
+import ParticleBackground from './ParticleBackground';
 
 const Education = () => {
   const education = [
@@ -42,8 +43,9 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="section bg-dark-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="education" className="section relative">
+      <ParticleBackground />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,6 +63,7 @@ const Education = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-dark/80 backdrop-blur-sm p-6 rounded-lg"
           >
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
               <AcademicCapIcon className="h-6 w-6 mr-2 text-primary" />
@@ -74,7 +77,7 @@ const Education = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="card bg-dark"
+                  className="card bg-dark/90 backdrop-blur-sm"
                 >
                   <h4 className="text-xl font-semibold text-white">
                     {edu.degree}
@@ -105,6 +108,7 @@ const Education = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="bg-dark/80 backdrop-blur-sm p-6 rounded-lg"
           >
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
               <BookOpenIcon className="h-6 w-6 mr-2 text-primary" />
@@ -118,7 +122,7 @@ const Education = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="card bg-dark"
+                  className="card bg-dark/90 backdrop-blur-sm"
                 >
                   <h4 className="text-xl font-semibold text-white">
                     {cert.name}

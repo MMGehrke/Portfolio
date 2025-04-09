@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
+import ParticleBackground from './ParticleBackground';
 
 const Contact = () => {
   return (
-    <section id="contact" className="section bg-dark-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="section relative">
+      <ParticleBackground />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -19,14 +21,14 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center space-y-4"
+          className="text-center space-y-4 bg-dark/80 backdrop-blur-sm p-8 rounded-lg"
         >
           <p className="text-lg text-white">
             If you wish to get in contact with me, please message me on LinkedIn
           </p>
           <div className="flex justify-center">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/macoy-gehrke/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-primary transition-colors duration-200"
@@ -38,6 +40,9 @@ const Contact = () => {
             </a>
           </div>
         </motion.div>
+      </div>
+      <div className="text-center text-gray-400 text-sm mt-8">
+        2025 Macoy Gehrke. All rights reserved.
       </div>
     </section>
   );

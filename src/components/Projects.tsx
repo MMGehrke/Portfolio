@@ -4,37 +4,37 @@ import { CodeBracketIcon, ShieldCheckIcon, MagnifyingGlassIcon } from '@heroicon
 const Projects = () => {
   const projects = [
     {
-      title: 'Network Intrusion Detection System',
-      description: 'Developed a machine learning-based NIDS using Python and TensorFlow to detect and classify network attacks in real-time.',
-      technologies: ['Python', 'TensorFlow', 'Scikit-learn', 'Wireshark'],
+      title: 'Automated Security Hardening Script',
+      description: 'This project is an automated script designed to enhance the security of Mac, Linux, & Windows systems by applying various hardening configurations.',
+      technologies: ['Python', 'shell', 'powershell'],
       icon: ShieldCheckIcon,
-      link: '#',
+      link: 'https://github.com/MMGehrke/Automated-Security-Hardening/tree/main',
     },
     {
-      title: 'Vulnerability Assessment Tool',
-      description: 'Created an automated vulnerability scanner that identifies security weaknesses in web applications and network infrastructure.',
-      technologies: ['Python', 'Nmap', 'OWASP ZAP', 'Docker'],
+      title: 'Custom GRC Dashboard',
+      description: 'A web-based compliance tool that allows healthcare professionals to select from pre-loaded standards to create automated audit checklists, with the ability to upload and reference custom regulations.',
+      technologies: ['Python', 'React'],
       icon: MagnifyingGlassIcon,
-      link: '#',
+      link: 'https://github.com/MMGehrke/HealthcareGRCDashboardBackend/tree/main',
     },
     {
-      title: 'Secure Messaging Protocol',
-      description: 'Implemented an end-to-end encrypted messaging protocol with perfect forward secrecy and deniable authentication.',
-      technologies: ['C++', 'OpenSSL', 'Cryptography', 'Network Programming'],
+      title: 'File Encryption/Decryption Tool',
+      description: 'Secure File Handling by developing an application enabling users to encrypt and decrypt files, ensuring data confidentiality through the implementation of robust cryptographic algorithms (both symmetric and asymmetric).',
+      technologies: ['Python', 'Python libraries: cryptography'],
       icon: CodeBracketIcon,
-      link: '#',
+      link: 'https://github.com/MMGehrke/File-Encryption',
     },
   ];
 
   return (
-    <section id="projects" className="section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="section relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="section-title"
+          className="section-title text-white"
         >
           Projects & Research
         </motion.h2>

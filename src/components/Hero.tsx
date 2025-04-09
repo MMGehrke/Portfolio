@@ -52,7 +52,7 @@ const Hero = () => {
           >
             <div className="flex justify-center space-x-6">
               <a
-                href="https://github.com"
+                href="https://github.com/MMGehrke"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-primary"
@@ -63,7 +63,7 @@ const Hero = () => {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/macoy-gehrke/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-primary"

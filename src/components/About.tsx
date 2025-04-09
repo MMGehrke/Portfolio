@@ -2,14 +2,14 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const skills = [
-    'Network Security',
-    'Ethical Hacking',
-    'Threat Analysis',
-    'Incident Response',
-    'Penetration Testing',
+    'NIST & ISO Frameworks',
+    'Risk & Compliance Auditing',
+    'Python Programming',
+    'Security Engineering',
+    'Data Analytics',
     'Security Architecture',
     'Cryptography',
-    'Risk Assessment',
+    'Malware Analysis',
   ];
 
   return (
@@ -33,13 +33,13 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-lg text-gray-300 mb-6">
-              I am a dedicated cybersecurity graduate student at the University of London, specializing in network security and ethical hacking. My academic journey has equipped me with comprehensive knowledge in various aspects of cybersecurity, from network defense to threat analysis.
+              I'm a cybersecurity graduate student at the University of London, specializing in GRC auditing with a focus on NIST and ISO frameworks. My professional and academic journey has equipped me with comprehensive knowledge across various cybersecurity domains, complemented by generalist python programming and power-bi data analytics skills.
             </p>
             <p className="text-lg text-gray-300 mb-6">
-              My research focuses on emerging threats and innovative defense mechanisms. I am particularly interested in developing practical solutions to real-world security challenges while maintaining a strong theoretical foundation.
+              My focuses are currently on automating Governance, Risk, and Compliance (GRC) audit practices. I'm currently developing a custom healthcare-specific GRC dashboard. My projects emphasize practical solutions to real-world security challenges while maintaining a strong theoretical foundation.
             </p>
             <p className="text-lg text-gray-300">
-              Through my studies and hands-on experience, I have developed expertise in multiple security domains, enabling me to approach security challenges from various perspectives and implement comprehensive solutions.
+              Through my studies and hands-on experience, I've developed working knowledge across multiple security domains. This enables me to approach security challenges from various perspectives and implement comprehensive solutions.
             </p>
           </motion.div>
           
