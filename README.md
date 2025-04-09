@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# This is the code I used for my professional portfolio
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
