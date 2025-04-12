@@ -1,82 +1,62 @@
+import React from 'react';
 import { motion } from 'framer-motion';
+import ParticleBackground from './ParticleBackground';
 
 const About = () => {
   const skills = [
-    'NIST & ISO Frameworks',
-    'Risk & Compliance Auditing',
-    'Python Programming',
-    'Security Engineering',
-    'Data Analytics',
-    'Security Architecture',
-    'Cryptography',
-    'Malware Analysis',
+    "Security Engineering",
+    "Python Programming",
+    "GRC Auditing",
+    "NIST Security Frameworks",
   ];
 
   return (
-    <section id="about" className="section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
+    <section id="about" className="section relative">
+      <ParticleBackground />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="section-title text-white"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          About Me
-        </motion.h2>
-        
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+          <p className="text-gray-400">A brief introduction to my background and expertise</p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-dark/80 backdrop-blur-sm p-6 rounded-lg"
           >
-            <p className="text-lg text-gray-300 mb-6">
-              I'm a cybersecurity graduate student at the University of London, specializing in GRC auditing with a focus on NIST and ISO frameworks. My professional and academic journey has equipped me with comprehensive knowledge across various cybersecurity domains, complemented by generalist python programming and power-bi data analytics skills.
+            <h3 className="text-2xl font-bold text-white mb-6">Background</h3>
+            <p className="text-gray-400 mb-4">
+              I'm a cybersecurity graduate student transitioning from a patient-facing healthcare role to the cyber domain. My background has provided me with strong Python skills that complement my growing experience with AWS and DevOps practices.
             </p>
-            <p className="text-lg text-gray-300 mb-6">
-              My focuses are currently on automating Governance, Risk, and Compliance (GRC) audit practices. I'm currently developing a custom healthcare-specific GRC dashboard. My projects emphasize practical solutions to real-world security challenges while maintaining a strong theoretical foundation.
-            </p>
-            <p className="text-lg text-gray-300">
-              Through my studies and hands-on experience, I've developed working knowledge across multiple security domains. This enables me to approach security challenges from various perspectives and implement comprehensive solutions.
+            <p className="text-gray-400">
+              Currently focusing on projects that automate security engineering and GRC audit processes, I aim to expand my knowledge and expertise to take on more development projects in the future.
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="card bg-dark-light"
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-dark/80 backdrop-blur-sm p-6 rounded-lg"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Core Competencies
-            </h3>
+            <h3 className="text-2xl font-bold text-white mb-6">Core Competencies</h3>
             <div className="grid grid-cols-2 gap-4">
               {skills.map((skill, index) => (
                 <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="flex items-center space-x-2"
+                  className="bg-dark/90 backdrop-blur-sm p-4 rounded-lg"
                 >
-                  <svg
-                    className="h-5 w-5 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-gray-300">{skill}</span>
+                  <p className="text-white text-center">{skill}</p>
                 </motion.div>
               ))}
             </div>

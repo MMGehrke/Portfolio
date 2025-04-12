@@ -26,21 +26,27 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row justify-center gap-4"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex justify-center mt-8"
           >
             <a
               href="#projects"
-              className="btn btn-primary"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors duration-300"
             >
               View My Projects
-            </a>
-            <a
-              href="/resume.pdf"
-              download="Macoy_Gehrke_Resume.pdf"
-              className="btn btn-secondary"
-            >
-              Download Resume
+              <svg
+                className="ml-2 -mr-1 h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
             </a>
           </motion.div>
           

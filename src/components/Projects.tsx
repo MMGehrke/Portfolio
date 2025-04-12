@@ -1,78 +1,77 @@
+import React from 'react';
 import { motion } from 'framer-motion';
+import ParticleBackground from './ParticleBackground';
 import { CodeBracketIcon, ShieldCheckIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 const Projects = () => {
   const projects = [
     {
       title: 'Automated Security Hardening Script',
-      description: 'This project is an automated script designed to enhance the security of Mac, Linux, & Windows systems by applying various hardening configurations.',
-      technologies: ['Python', 'shell', 'powershell'],
+      description: 'A Python script that automates the process of hardening Windows and Linux systems based on CIS benchmarks.',
+      technologies: ['Python', 'Windows', 'Linux', 'CIS Benchmarks'],
       icon: ShieldCheckIcon,
-      link: 'https://github.com/MMGehrke/Automated-Security-Hardening/tree/main',
+      link: 'https://github.com/MMGehrke/Automated-Security-Hardening'
     },
     {
       title: 'Custom GRC Dashboard',
-      description: 'A web-based compliance tool that allows healthcare professionals to select from pre-loaded standards to create automated audit checklists, with the ability to upload and reference custom regulations.',
-      technologies: ['Python', 'React'],
+      description: 'A web-based platform that streamlines healthcare GRC audits through dynamic regulatory standard switching, custom regulation storage, and EHR/CMS integration.',
+      technologies: ['Python', 'React', 'PostgreSQL', 'FastAPI'],
       icon: MagnifyingGlassIcon,
-      link: 'https://github.com/MMGehrke/HealthcareGRCDashboardBackend/tree/main',
+      link: 'https://github.com/MMGehrke/HealthcareGRCDashboardBackend'
     },
     {
-      title: 'File Encryption/Decryption Tool',
-      description: 'Secure File Handling by developing an application enabling users to encrypt and decrypt files, ensuring data confidentiality through the implementation of robust cryptographic algorithms (both symmetric and asymmetric).',
-      technologies: ['Python', 'Python libraries: cryptography'],
+      title: 'File Encryption',
+      description: 'The file encryption tool is a Python implementation that provides robust file encryption and decryption using AES-256-CBC from the cryptography library.',
+      technologies: ['Python', 'Cryptography', 'AES-256-CBC', 'Security'],
       icon: CodeBracketIcon,
-      link: 'https://github.com/MMGehrke/File-Encryption',
-    },
+      link: 'https://github.com/MMGehrke/File-Encryption'
+    }
   ];
 
   return (
     <section id="projects" className="section relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-50">
-        <motion.h2
+      <ParticleBackground />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="section-title text-white"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          Projects & Research
-        </motion.h2>
+          <h2 className="text-4xl font-bold text-white mb-4">Projects</h2>
+          <p className="text-gray-400">A showcase of my recent work and contributions</p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="card group hover:shadow-xl transition-shadow duration-300"
+                className="bg-dark/80 backdrop-blur-sm rounded-lg p-6 hover:bg-dark/90 transition-colors duration-300"
               >
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white ml-4">
+                  <h3 className="text-xl font-semibold text-white ml-4">
                     {project.title}
                   </h3>
                 </div>
                 
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-400 mb-4">
                   {project.description}
                 </p>
                 
                 <div className="mb-4">
-                  <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    Technologies Used:
-                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 text-sm bg-gray-100 dark:bg-dark rounded-full text-gray-700 dark:text-gray-300"
+                        className="text-sm text-gray-400 bg-dark/90 px-2 py-1 rounded"
                       >
                         {tech}
                       </span>
@@ -82,6 +81,8 @@ const Projects = () => {
                 
                 <a
                   href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center text-primary hover:text-primary-dark font-medium"
                 >
                   View Project

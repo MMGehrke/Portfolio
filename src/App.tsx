@@ -7,6 +7,7 @@ import About from './components/About';
 import Education from './components/Education';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Blog from './components/Blog';
 import ParticleBackground from './components/ParticleBackground';
 
 function App() {
@@ -24,13 +25,14 @@ function App() {
             <About />
             <Education />
             <Projects />
+            <Blog />
             <Contact />
             {/* Additional sections will be added here */}
           </main>
-          <footer className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <p className="text-gray-300">
-                © {new Date().getFullYear()} Cybersecurity Portfolio. All rights reserved.
+          <footer className="bg-dark py-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <p className="text-center text-gray-400">
+                © 2025 Macoy Gehrke. All rights reserved.
               </p>
             </div>
           </footer>
