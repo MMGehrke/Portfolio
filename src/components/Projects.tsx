@@ -8,7 +8,7 @@ const Projects = () => {
     {
       title: 'Automated Security Hardening Script',
       description: 'A Python script that automates the process of hardening Windows and Linux systems based on CIS benchmarks.',
-      technologies: ['Python', 'Windows', 'Linux', 'CIS Benchmarks'],
+      technologies: ['Python', 'Windows', 'Linux', 'JSON'],
       icon: ShieldCheckIcon,
       link: 'https://github.com/MMGehrke/Automated-Security-Hardening'
     },

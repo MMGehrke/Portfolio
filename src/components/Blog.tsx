@@ -13,10 +13,10 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 2,
-    title: "Automating GRC Processes with Python",
-    description: "How to leverage Python scripting to automate Governance, Risk, and Compliance processes, reducing manual workload and improving accuracy.",
-    readTime: "10 min read",
-    date: "March 10, 2024"
+    title: "My Journey",
+    description: "My two and half year journey in a nutshell.",
+    readTime: "3 min read",
+    date: "April 14, 2025"
   }
 ];
 
