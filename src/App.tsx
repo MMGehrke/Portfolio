@@ -7,7 +7,6 @@ import About from './components/About';
 import Education from './components/Education';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import Blog from './components/Blog';
 import ParticleBackground from './components/ParticleBackground';
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
             <About />
             <Education />
             <Projects />
-            <Blog />
             <Contact />
             {/* Additional sections will be added here */}
           </main>
