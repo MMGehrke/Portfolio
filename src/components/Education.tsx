@@ -8,7 +8,7 @@ const Education = () => {
       degree: 'Master of Science in Cybersecurity',
       school: 'University of London',
       year: 'April 2024 - April 2026',
-      description: 'Specializing in GRC and application security',
+      description: 'Specializing in cloud security and GRC',
       courses: [
         'Web and Application Security',
         'Applied Cryptography',
