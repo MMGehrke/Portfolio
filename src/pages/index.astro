@@ -3,20 +3,84 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Home">
-  <h1>Macoy Gehrke</h1>
-  <p style="font-size: 1.2rem; color: var(--heading-color);">
-    Cyber Security Researcher & Penetration Tester.
-  </p>
-  <p>
-    Welcome to my new portfolio. This site is built with Astro, focusing on speed,
-    security, and simplicity. It's a clean, content-first platform to showcase my 
-    projects and research.
-  </p>
-  
-  <h2>Recent Activity</h2>
-  <p>
-    I'm currently focused on [Your Current Focus, e.g., cloud penetration testing, IoT security, etc.]. 
-    You can see my most recent projects on the <a href="/projects">projects page</a>.
-  </p>
+
+  <section style="margin-bottom: 4rem;">
+    <h1>Macoy Gehrke</h1>
+    <p style="font-size: 1.1rem; color: var(--heading-color);">
+      Cyber Security Researcher & Penetration Tester.
+    </p>
+    <p>
+      A minimalist space where I document my research, projects, and 
+      anything else I'm learning in the world of cybersecurity.
+    </p>
+  </section>
+
+  <section>
+    <article style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+      <a href="/projects" class="article-link">
+        <div class="article-content">
+          <h3 class="article-title">Project: [Your Project Name Here]</h3>
+          <p class="article-description">
+            A brief one-sentence summary of what this project is or what you learned.
+          </p>
+        </div>
+        <time class="article-date">Nov 2025</time>
+      </a>
+    </article>
+
+    <article style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+      <a href="/projects" class="article-link">
+        <div class="article-content">
+          <h3 class="article-title">Research: [Your Research Topic]</h3>
+          <p class="article-description">
+            Exploring new vulnerabilities in [some technology].
+          </p>
+        </div>
+        <time class="article-date">Oct 2025</time>
+      </a>
+    </article>
+
+  </section>
+
 </MainLayout>
 
+<style>
+  .article-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+  }
+
+  .article-link:hover {
+    color: var(--accent-color);
+  }
+
+  .article-link:hover .article-title {
+    color: var(--accent-color);
+  }
+
+  .article-title {
+    color: var(--heading-color);
+    margin-bottom: 0.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .article-description {
+    margin: 0;
+  }
+
+  .article-content {
+    flex: 1;
+  }
+
+  .article-date {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    padding-left: 1.5rem;
+    text-align: right;
+  }
+</style>
