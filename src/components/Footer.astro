@@ -1,8 +1,32 @@
-<footer style="border-top: 1px solid var(--border-color); margin-top: 4rem; padding-top: 2rem; font-family: var(--font-sans); font-size: 0.9rem; color: #71717A;">
-  <p style="margin-bottom: 1rem;">© {new Date().getFullYear()} Macoy Gehrke. All rights reserved.</p>
-  <div style="display: flex; gap: 1.5rem;">
-    <a href="https://github.com/MMGehrke" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  </div>
+---
+// src/components/Footer.astro
+---
+
+<footer class="site-footer">
+  <p>© {new Date().getFullYear()} Macoy Gehrke</p>
+  <a href="/policy">Site policy</a>
 </footer>
 
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+    padding-top: 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-footer a {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: var(--heading-color);
+    text-decoration: underline;
+  }
+</style>

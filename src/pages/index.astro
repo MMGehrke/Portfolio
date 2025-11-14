@@ -1,86 +1,211 @@
 ---
+// src/pages/index.astro
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Home">
-
-  <section style="margin-bottom: 4rem;">
-    <h1>Macoy Gehrke</h1>
-    <p style="font-size: 1.1rem; color: var(--heading-color);">
-      Cyber Security Researcher & Penetration Tester.
-    </p>
-    <p>
-      A minimalist space where I document my research, projects, and 
-      anything else I'm learning in the world of cybersecurity.
-    </p>
+  
+  <section class="hero-container">
+    <img 
+      src="https://placehold.co/150x150/272727/F4F4F4?text=MG" 
+      alt="Profile Picture" 
+      class="profile-pic" 
+    />
+    <h1 class="name">macoy gehrke</h1>
+    <a href="mailto:[YOUR_EMAIL@HERE.COM]" class="hire-button">
+      <!-- This container uses position:relative to stack the dots -->
+      <span class="live-indicator">
+        <!-- This is the expanding, fading "ping" ring -->
+        <span class="ping-animation"></span>
+        <!-- This is the solid green dot on top -->
+        <span class="solid-dot"></span>
+      </span>
+      <span>hire me</span>
+    </a>
   </section>
 
-  <section>
-    <article style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
-      <a href="/projects" class="article-link">
-        <div class="article-content">
-          <h3 class="article-title">Project: [Your Project Name Here]</h3>
-          <p class="article-description">
-            A brief one-sentence summary of what this project is or what you learned.
-          </p>
-        </div>
-        <time class="article-date">Nov 2025</time>
-      </a>
-    </article>
+  <section class="home-section">
+    <h2>About</h2>
+    <p>
+      [TODO: Add a short, 2-3 sentence professional bio here. Briefly mention 
+      your passion, key skills, and what you do.]
+    </p>
+    <a href="/about" class="more-link">More about me &rarr;</a>
+  </section>
 
-    <article style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
-      <a href="/projects" class="article-link">
-        <div class="article-content">
-          <h3 class="article-title">Research: [Your Research Topic]</h3>
-          <p class="article-description">
-            Exploring new vulnerabilities in [some technology].
-          </p>
-        </div>
-        <time class="article-date">Oct 2025</time>
-      </a>
-    </article>
-
+  <section class="home-section">
+    <h2>Recent Posts</h2>
+    <div class="post-list">
+      <article class="post-item">
+        <a href="/blog/api-testing-deep-dive" class="post-link">
+          <span class="post-title">API Testing Deep Dive</span>
+          <time class="post-date">Nov 14, 2025</time>
+        </a>
+      </article>
+      <article class="post-item">
+        <a href="/blog/project-2" class="post-link">
+          <span class="post-title">Deconstructing a [Vulnerability]</span>
+          <time class="post-date">Oct 30, 2025</time>
+        </a>
+      </article>
+      <article class="post-item">
+        <a href="/blog/project-1" class="post-link">
+          <span class="post-title">My Top 5 Tools for Pentesting</span>
+          <time class="post-date">Sep 15, 2025</time>
+        </a>
+      </article>
+    </div>
+    <a href="/blog" class="more-link">More posts &rarr;</a>
   </section>
 
 </MainLayout>
 
 <style>
-  .article-link {
+  /* --- Hero Section Styles --- */
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 4rem;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+  }
+
+  .name {
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+  }
+
+  .hire-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.75rem;
+    background-color: #6B6B6B;
+    color: var(--heading-color);
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: lowercase;
+    transition: all 0.2s ease;
+  }
+
+  .hire-button:hover {
+    opacity: 0.85;
+  }
+
+  
+  /* --- NEW "Ping" Animation Styles --- */
+  .live-indicator {
+    display: flex; /* This is the "flex" part of inline-flex */
+    position: relative; /* This is the anchor for the absolute-positioned ping */
+    width: 10px;
+    height: 10px;
+    margin-right: 12px;
+  }
+
+  .ping-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #22C55E;
+    border-radius: 50%;
+    /* This is the animation! */
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .solid-dot {
+    position: relative; /* Sits on top of the ping */
+    width: 10px;
+    height: 10px;
+    background-color: #22C55E;
+    border-radius: 50%;
+  }
+
+  
+  /* This is the @keyframes animation that "ping" refers to */
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+  /* --- Section Styles (About/Posts) --- */
+  .home-section {
+    margin-bottom: 4rem;
+  }
+
+  .home-section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+  }
+
+  .more-link {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--heading-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .more-link:hover {
+    text-decoration: underline;
+  }
+
+  
+  /* --- Post List Styles --- */
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .post-item {
+    font-family: var(--font-sans);
+  }
+
+  .post-link {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding: 0.75rem 0.25rem;
+    border-radius: 4px;
     text-decoration: none;
     color: var(--text-color);
     transition: all 0.2s ease;
   }
 
-  .article-link:hover {
-    color: var(--accent-color);
-  }
-
-  .article-link:hover .article-title {
-    color: var(--accent-color);
-  }
-
-  .article-title {
+  .post-link:hover {
+    background-color: #272727;
     color: var(--heading-color);
-    margin-bottom: 0.25rem;
-    transition: color 0.2s ease;
   }
 
-  .article-description {
-    margin: 0;
+  .post-title {
+    font-weight: 500;
   }
 
-  .article-content {
-    flex: 1;
-  }
-
-  .article-date {
-    font-family: var(--font-sans);
+  .post-date {
     font-size: 0.9rem;
-    color: var(--text-color);
-    padding-left: 1.5rem;
-    text-align: right;
+    color: #A1A1A1;
+    font-feature-settings: 'tnum'; /* Aligns numbers */
   }
 </style>
