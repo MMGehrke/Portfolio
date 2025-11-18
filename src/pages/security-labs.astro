@@ -1,0 +1,216 @@
+---
+// src/pages/security-labs.astro
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Security Labs & Projects">
+  <div id="lab-tracker">
+    <div class="controls">
+      <div class="search-container">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search labs by name or category..." 
+          class="search-input"
+        />
+      </div>
+    </div>
+
+    <div id="labsContainer"></div>
+  </div>
+</MainLayout>
+
+<script>
+  // Lab data structure
+  const labsData = [
+    { category: "Cybr AWS Blue Team Labs", name: "Launching an ec2 instance", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Create a VPC with Public and Private subnets", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Configure security groups and NACLs to specific requirements", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Deploy AWS WAF ACL for Application Load Balancer", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Check policies for new access before deployment with IAM Access Analyzer", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Check IAM policies against a deny list with IAM Access Analyzer", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Generated an IAM Credentials Report", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Encrypt Existing Unencrypted EBS Volumes and Snapshots", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Encrypt and Decrypt Data with KMS and Data Keys", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Creating Buckets and Uploading Objects in S3", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Create an IAM role for secure access to S3 based on a scenario", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "S3 Presigned URLs", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Enable Threat Detection with GuardDuty", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Secure EC2 Access with SSM Session Manager and KMS", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Automated S3 Remediation to Enforce Block Public Access", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Remediate Open SSH Security Groups with AWS Config and SSM", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Amazon Inspector Sandbox", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "CloudFormation Guard", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Deploying & destroying an AWS resource", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Writing better Terraform", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Managing Terraform state and drift", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Terraform remote state", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Importing AWS resources into Terraform", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Import an AWS resource", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Building reusable Terraform modules – Part 2", link: "#" },
+    { category: "Cybr AWS Blue Team Labs", name: "Terraform Final Project", link: "#" },
+    { category: "ZTM Courses", name: "Complete Python Developer", link: "#" },
+    { category: "ZTM Courses", name: "TensorFlow for Deep Learning Bootcamp", link: "#" },
+    { category: "ZTM Courses", name: "Complete SQL and Databases", link: "#" },
+  ];
+
+  // Search functionality
+  const searchInput = document.getElementById('searchInput');
+  const labsContainer = document.getElementById('labsContainer');
+
+  function renderLabs(filteredLabs = labsData) {
+    // Group labs by category
+    const grouped = filteredLabs.reduce((acc, lab) => {
+      if (!acc[lab.category]) {
+        acc[lab.category] = [];
+      }
+      acc[lab.category].push(lab);
+      return acc;
+    }, {});
+
+    // Render grouped labs
+    labsContainer.innerHTML = Object.keys(grouped)
+      .sort()
+      .map(category => `
+        <section class="category-section">
+          <h2 class="category-header">${category}</h2>
+          <div class="labs-grid">
+            ${grouped[category].map(lab => `
+              <article class="lab-card">
+                <h3 class="lab-name">${lab.name}</h3>
+                ${lab.link !== '#' ? `<a href="${lab.link}" class="lab-link" target="_blank" rel="noopener noreferrer">View Lab →</a>` : ''}
+              </article>
+            `).join('')}
+          </div>
+        </section>
+      `).join('');
+
+    // Show message if no results
+    if (Object.keys(grouped).length === 0) {
+      labsContainer.innerHTML = '<p class="no-results">No labs found matching your search.</p>';
+    }
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    if (query === '') {
+      renderLabs();
+      return;
+    }
+
+    const filtered = labsData.filter(lab => 
+      lab.name.toLowerCase().includes(query) || 
+      lab.category.toLowerCase().includes(query)
+    );
+    renderLabs(filtered);
+  });
+
+  // Initial render
+  renderLabs();
+</script>
+
+<style>
+  #lab-tracker {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .controls {
+    margin-bottom: 3rem;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.2s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .category-section {
+    margin-bottom: 3rem;
+  }
+
+  .category-header {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+  }
+
+  .labs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .lab-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #1A1A1A;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .lab-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color);
+  }
+
+  .lab-name {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin: 0;
+  }
+
+  .lab-link {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: auto;
+  }
+
+  .lab-link:hover {
+    text-decoration: underline;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .labs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
