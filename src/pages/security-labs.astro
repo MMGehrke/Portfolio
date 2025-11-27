@@ -20,7 +20,7 @@ import MainLayout from '../layouts/MainLayout.astro';
   </div>
 </MainLayout>
 
-<script>
+<script is:inline>
   // Lab data structure
   const labsData = [
     { category: "Cybr AWS Blue Team Labs", name: "Launching an ec2 instance", link: "#" },
@@ -54,59 +54,74 @@ import MainLayout from '../layouts/MainLayout.astro';
     { category: "ZTM Courses", name: "Complete SQL and Databases", link: "#" },
   ];
 
-  // Search functionality
-  const searchInput = document.getElementById('searchInput');
-  const labsContainer = document.getElementById('labsContainer');
+  // Wait for DOM to be ready
+  function init() {
+    const searchInput = document.getElementById('searchInput');
+    const labsContainer = document.getElementById('labsContainer');
 
-  function renderLabs(filteredLabs = labsData) {
-    // Group labs by category
-    const grouped = filteredLabs.reduce((acc, lab) => {
-      if (!acc[lab.category]) {
-        acc[lab.category] = [];
-      }
-      acc[lab.category].push(lab);
-      return acc;
-    }, {});
-
-    // Render grouped labs
-    labsContainer.innerHTML = Object.keys(grouped)
-      .sort()
-      .map(category => `
-        <section class="category-section">
-          <h2 class="category-header">${category}</h2>
-          <div class="labs-grid">
-            ${grouped[category].map(lab => `
-              <article class="lab-card">
-                <h3 class="lab-name">${lab.name}</h3>
-                ${lab.link !== '#' ? `<a href="${lab.link}" class="lab-link" target="_blank" rel="noopener noreferrer">View Lab →</a>` : ''}
-              </article>
-            `).join('')}
-          </div>
-        </section>
-      `).join('');
-
-    // Show message if no results
-    if (Object.keys(grouped).length === 0) {
-      labsContainer.innerHTML = '<p class="no-results">No labs found matching your search.</p>';
-    }
-  }
-
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    if (query === '') {
-      renderLabs();
+    if (!searchInput || !labsContainer) {
+      console.error('Required elements not found');
       return;
     }
 
-    const filtered = labsData.filter(lab => 
-      lab.name.toLowerCase().includes(query) || 
-      lab.category.toLowerCase().includes(query)
-    );
-    renderLabs(filtered);
-  });
+    function renderLabs(filteredLabs = labsData) {
+      // Group labs by category
+      const grouped = filteredLabs.reduce((acc, lab) => {
+        if (!acc[lab.category]) {
+          acc[lab.category] = [];
+        }
+        acc[lab.category].push(lab);
+        return acc;
+      }, {});
 
-  // Initial render
-  renderLabs();
+      // Render grouped labs
+      labsContainer.innerHTML = Object.keys(grouped)
+        .sort()
+        .map(category => `
+          <section class="category-section">
+            <h2 class="category-header">${category}</h2>
+            <div class="labs-grid">
+              ${grouped[category].map(lab => `
+                <article class="lab-card">
+                  <h3 class="lab-name">${lab.name}</h3>
+                  ${lab.link !== '#' ? `<a href="${lab.link}" class="lab-link" target="_blank" rel="noopener noreferrer">View Lab →</a>` : ''}
+                </article>
+              `).join('')}
+            </div>
+          </section>
+        `).join('');
+
+      // Show message if no results
+      if (Object.keys(grouped).length === 0) {
+        labsContainer.innerHTML = '<p class="no-results">No labs found matching your search.</p>';
+      }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if (query === '') {
+        renderLabs();
+        return;
+      }
+
+      const filtered = labsData.filter(lab => 
+        lab.name.toLowerCase().includes(query) || 
+        lab.category.toLowerCase().includes(query)
+      );
+      renderLabs(filtered);
+    });
+
+    // Initial render
+    renderLabs();
+  }
+
+  // Run immediately - DOM should be ready for static sites
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    // Use setTimeout to ensure DOM is fully parsed
+    setTimeout(init, 0);
+  }
 </script>
 
 <style>
